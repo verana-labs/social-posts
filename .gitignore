@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Temp working files created during publishing (text/image staging)
+.li-text.txt
+.x-text*.txt
+.li.txt
+.x.txt
+.upload-*.jpg

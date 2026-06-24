@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1128px; height: 191px; }
+  .banner {
+    position: relative;
+    width: 1128px; height: 191px;
+    background: #fafafb;
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  /* signature green→purple gradient bar along the bottom edge */
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+  /* faint brand-tint wash on the right so type pops without a heavy panel */
+  .wash {
+    position: absolute; top: 0; bottom: 0; right: 0; width: 620px;
+    background: linear-gradient(90deg, rgba(118,62,240,0) 0%, rgba(118,62,240,0.05) 60%, rgba(31,181,122,0.06) 100%);
+  }
+  /* content sits in the RIGHT two-thirds (LinkedIn overlaps lower-left with the logo) */
+  .content {
+    position: absolute; right: 64px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
+    text-align: right;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .brandrow .name {
+    font-size: 26px; font-weight: 700; color: #111111; letter-spacing: -0.01em;
+  }
+  .vmark { display: block; }
+  .tagline {
+    font-size: 34px; font-weight: 700; color: #111111; line-height: 1.05; letter-spacing: -0.015em;
+  }
+  .sub {
+    margin-top: 12px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #5b5b5b; letter-spacing: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="wash"></div>
+
+    <div class="content">
+      <div class="brandrow">
+        <!-- exact V mark from og-default.svg (purple body + green inner), scaled -->
+        <svg class="vmark" width="40" height="38" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="tagline">The non-profit steward of the open trust layer.</div>
+      <div class="sub">Owns the specifications · Stewards the open source · Grows the ecosystem</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
