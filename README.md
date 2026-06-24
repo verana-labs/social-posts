@@ -352,7 +352,8 @@ authoring format.
 | Claude Desktop can't find `docker` | Use the **absolute** path from `which docker`; Desktop doesn't inherit your shell `PATH`. |
 | LinkedIn calls fail with auth errors | Re-run the [one-time OAuth](#3-authenticate-linkedin-one-time-oauth); check `/oauth/status`. |
 | X posting returns **403 oauth1-permissions** | Access Token was created before write perms were enabled — set the app to **Read and write** and **Regenerate** the token. |
-| X returns **401 Unauthorized** | Re-check all 5 credentials in `x.env` for typos / stray spaces. |
+| X returns **401 Unauthorized** | First suspect a **stale container** (see next row) — especially right after regenerating keys. Otherwise re-check all 5 credentials for typos / stray spaces, and confirm the Consumer Key/Secret and Access Token/Secret are from the **same** app. |
+| Edited an `*.env` but the server still uses the **old** credentials (e.g. 401 after regenerating keys) | These stdio servers read the env file **at container start**. A long-lived MCP connection keeps a container running, so it holds the old values. **Reconnect the server** (`/mcp` → reconnect) or kill the running container so the next call re-reads the env: `docker kill $(docker ps -q --filter ancestor=io2060/x-autonomous-mcp:latest)`. |
 | Action refused with a budget message | The daily limit is exhausted — raise the `*_MAX_*` value or wait for the daily reset. |
 
 ---

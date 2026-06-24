@@ -95,6 +95,7 @@ publish endpoint, so stdio JSON-RPC (or the MCP tools) is the only programmatic 
 | Image base64 too big to pass as a tool arg | Chat-tool transport limit | Use `publish.mjs` (reads file from disk). |
 | X `post_tweet` → **HTTP 403 Forbidden**, budget *not* incremented | Post **>280 chars** on free tier | Post a ≤280-char variant. |
 | X 403 even when short, budget not incremented | App lacks **write** perms / Free API tier | Set app to **Read+Write**, **regenerate** Access Token+Secret; or move to **Basic+** tier. |
+| X `post_tweet` → **HTTP 401 Unauthorized**, budget *not* incremented, **right after editing/regenerating keys** | A **stale Docker container** is still running with the **old** env — stdio servers read the env file only at container start, and a live MCP connection keeps the container warm. Reads may still work (bearer token), only writes 401. | Reconnect the server (`/mcp` → reconnect) or kill the container so the next call re-reads the env: `docker kill $(docker ps -q --filter ancestor=io2060/x-autonomous-mcp:latest)`. Verify the env shape first (right account user-id in `X_ACCESS_TOKEN`, matching consumer/access pairs). |
 | `&` shows as `&amp;` in the live post | API HTML-escapes ampersands | Use "and" in the source text. |
 | `**bold**` / `*italic*` shows literally | Markdown not supported on socials | Strip emphasis before posting. |
 | `billing_limit_user_error` from OpenAI image gen | OpenAI billing hard limit reached | Raise the limit / add credit at platform.openai.com → Billing. |
