@@ -1,14 +1,31 @@
 # social-posts
 
-Drafts and published social media content for **Verana**, **Mobiera**, and **2060.io**,
-organized one folder per brand:
+Source of truth for **Verana** (and **2060.io**) social media content and the
+**veranafoundation.org blog**, organized one folder per brand:
 
 ```text
 social-posts/
-├── 2060.io/
-├── mobiera/
-└── verana/
+├── 2060.io/                 # 2060.io brand — posting rules
+├── verana/                  # Verana social posts (LinkedIn / X) + assets
+└── veranafoundation.org/    # Blog posts rendered live by the Foundation website
 ```
+
+> **Public repo.** This repository is public (the Foundation website fetches the blog
+> content from it). **Never commit secrets** — API keys live only in `~/.mcp/*.env`,
+> outside this repo.
+
+## What's in here
+
+| Path | What it is |
+| --- | --- |
+| [`post-rules.md`](./post-rules.md) | Repo-wide rules: file naming, required sections, writing style. |
+| [`verana/verana-post-rules.md`](./verana/verana-post-rules.md) | Verana voice, sources of truth, terminology guardrails. |
+| [`2060.io/2060.io-post-rules.md`](./2060.io/2060.io-post-rules.md) | 2060.io posting rules. |
+| `verana/YYYYMMDD-NNN.md` (+ images) | Individual social posts with their generated media. |
+| [`verana/org-page-copy.md`](./verana/org-page-copy.md) | LinkedIn org-page copy (tagline, overview). |
+| [`verana/assets/`](./verana/assets/) | Brand assets (e.g. the LinkedIn banner + its HTML source). |
+| [`veranafoundation.org/blog/`](./veranafoundation.org/blog/) | **Live blog content** the website renders (see its [README](./veranafoundation.org/blog/README.md)). |
+| [`scripts/publish.mjs`](./scripts/publish.mjs) · [`scripts/PUBLISHING.md`](./scripts/PUBLISHING.md) | Publishing script + playbook (see [Publishing](#publishing)). |
 
 Posts are published through two MCP (Model Context Protocol) servers driven by
 **Claude Code** or **Claude Desktop**:
@@ -292,6 +309,40 @@ the full option list.
 
 ---
 
+## Publishing
+
+Posts are published with [`scripts/publish.mjs`](./scripts/publish.mjs), which drives the
+MCP servers over stdio JSON-RPC and reads any image **from disk** (so large media never has
+to pass through a chat tool-call argument). The full procedure — and the hard-won gotchas
+(X's 280-char limit returning a misleading 403, `&` → `&amp;` escaping, image compression
+with `sips`, stripping Markdown) — is documented in
+[`scripts/PUBLISHING.md`](./scripts/PUBLISHING.md).
+
+```bash
+# LinkedIn (image, public) + X (image) — separate text per platform
+node scripts/publish.mjs --linkedin --image verana/PIC.jpg --visibility PUBLIC \
+  --alt "…" --text-file verana/.li-text.txt
+node scripts/publish.mjs --x --image verana/PIC.png --text-file verana/.x-text-280.txt
+```
+
+Always write posts per [`post-rules.md`](./post-rules.md) (and
+[`verana/verana-post-rules.md`](./verana/verana-post-rules.md) for Verana): at most one em
+dash, no Markdown / `&` in the body, X variants ≤ 280 chars.
+
+---
+
+## Blog (veranafoundation.org)
+
+[`veranafoundation.org/blog/`](./veranafoundation.org/blog/) is the **source of truth** for
+the Blog on [veranafoundation.org/blog](https://veranafoundation.org/blog). The website
+fetches these Markdown posts from this repo over the GitHub API and renders them with ISR —
+this repo is the content store; the site is just the renderer. Each post is a Markdown file
+with YAML front matter (`title`, `date`, `tag`, `excerpt`, `author`, `authorAvatar`,
+`authorSocial`, …). See the [blog README](./veranafoundation.org/blog/README.md) for the
+authoring format.
+
+---
+
 ## Troubleshooting
 
 | Symptom | Fix |
@@ -310,9 +361,19 @@ the full option list.
 
 ```text
 social-posts/
-├── 2060.io/    # 2060.io brand posts
-├── mobiera/    # Mobiera brand posts
-├── verana/     # Verana brand posts
+├── post-rules.md                  # repo-wide posting rules
+├── 2060.io/
+│   └── 2060.io-post-rules.md
+├── verana/
+│   ├── verana-post-rules.md       # Verana voice + sources of truth
+│   ├── org-page-copy.md           # LinkedIn org-page tagline + overview
+│   ├── YYYYMMDD-NNN.md (+ images) # individual social posts
+│   └── assets/                    # banner.html + rendered banner PNG
+├── veranafoundation.org/
+│   └── blog/                      # live blog content (+ its own README)
+├── scripts/
+│   ├── publish.mjs                # publish to LinkedIn / X via the MCP servers
+│   └── PUBLISHING.md              # publishing playbook
 ├── LICENSE
 └── README.md
 ```
