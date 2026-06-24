@@ -33,6 +33,7 @@ date: 2026-06-24            # YYYY-MM-DD; used for ordering and display
 tag: Mission               # one short category label (shown on the card)
 excerpt: One or two sentences shown on the blog index card.
 author: Verana Foundation  # optional
+authorAvatar: https://example.org/avatar.png  # optional; shown if it returns an image
 ---
 
 The body, in Markdown.
@@ -47,6 +48,7 @@ The body, in Markdown.
 | `tag` | yes | Single short category, e.g. `Mission`, `Specifications`, `Formation`. |
 | `excerpt` | yes | Plain-text summary for the index card and meta description. |
 | `author` | no | Defaults to "Verana Foundation". |
+| `authorAvatar` | no | Absolute URL of an author avatar image. Shown on the post hero and the blog index card **only if the URL returns an image** (validated server-side); otherwise silently omitted. |
 | `draft` | no | `true` hides the post from the published site. |
 
 ## Supported Markdown
