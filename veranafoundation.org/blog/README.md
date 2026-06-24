@@ -34,6 +34,7 @@ tag: Mission               # one short category label (shown on the card)
 excerpt: One or two sentences shown on the blog index card.
 author: Verana Foundation  # optional
 authorAvatar: https://example.org/avatar.png  # optional; shown if it returns an image
+authorSocial: https://www.linkedin.com/in/you/  # optional; makes the author a link
 ---
 
 The body, in Markdown.
@@ -49,6 +50,7 @@ The body, in Markdown.
 | `excerpt` | yes | Plain-text summary for the index card and meta description. |
 | `author` | no | Defaults to "Verana Foundation". |
 | `authorAvatar` | no | Absolute URL of an author avatar image. Shown on the post hero and the blog index card **only if the URL returns an image** (validated server-side); otherwise silently omitted. |
+| `authorSocial` | no | Absolute `http(s)` URL of the author's social profile. When set, the author (avatar + name) becomes a link that opens in a new tab. |
 | `draft` | no | `true` hides the post from the published site. |
 
 ## Supported Markdown

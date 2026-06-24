@@ -5,6 +5,7 @@ tag: Mission
 excerpt: A trust layer for the internet cannot be owned or controlled by any single party. Here is how Verana is built so that none can.
 author: Fabrice Rochette
 authorAvatar: https://2060.io/assets/illustrations/fabrice.jpeg
+authorSocial: https://www.linkedin.com/in/fabricerochette/
 ---
 
 Rebuilding trust is not just about technology. It is about who holds the power.
