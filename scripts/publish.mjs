@@ -19,7 +19,7 @@ import { homedir } from "node:os";
 import path from "node:path";
 
 const HOME = homedir();
-const DOCKER = "/usr/local/bin/docker";
+const DOCKER = process.env.DOCKER_BIN ?? "docker"; // resolved via PATH; override with DOCKER_BIN
 
 // --- tiny arg parser ---
 const args = process.argv.slice(2);
