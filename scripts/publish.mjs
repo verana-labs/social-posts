@@ -33,12 +33,17 @@ const textFile = val("--text-file");
 const text = val("--text") ?? (textFile ? readFileSync(textFile, "utf8").trimEnd() : undefined);
 const visibility = val("--visibility") ?? "PUBLIC";
 const altText = val("--alt") ?? "";
+// LinkedIn multi-image: --images a.png,b.png,c.png with --alts "alt a|alt b|alt c"
+const imagePaths = (val("--images") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+const altTexts = (val("--alts") ?? "").split("|").map((s) => s.trim());
 
 if (!text) { console.error("ERROR: provide --text or --text-file"); process.exit(2); }
 if (!doLinkedIn && !doX) { console.error("ERROR: pass --linkedin and/or --x"); process.exit(2); }
 
+const mimeFor = (p) =>
+  p.endsWith(".png") ? "image/png" : p.endsWith(".mp4") ? "video/mp4" : "image/jpeg";
 const imageB64 = imagePath ? readFileSync(path.resolve(imagePath)).toString("base64") : undefined;
-const imageMime = imagePath && imagePath.endsWith(".png") ? "image/png" : "image/jpeg";
+const imageMime = imagePath ? mimeFor(imagePath) : "image/jpeg";
 
 // --- minimal MCP stdio JSON-RPC client over a Docker container ---
 function mcpClient(dockerArgs) {
@@ -89,21 +94,41 @@ const show = (r) => (r?.content?.map?.((c) => c.text).join("\n") ?? JSON.stringi
 
 if (doLinkedIn) {
   console.error("== LinkedIn ==");
+  if (imageMime === "video/mp4") {
+    console.error("ERROR: the LinkedIn MCP has no video upload — use --images (stills) or post the video manually");
+    process.exit(2);
+  }
   const li = mcpClient(liArgs);
   await li.init();
-  let imageUrn;
-  if (imageB64) {
-    const up = await li.call("upload_media", { image_data: imageB64 });
-    console.error("upload_media:", show(up));
-    const m = show(up).match(/urn:li:(?:image|digitalmediaAsset):[A-Za-z0-9_-]+/);
-    imageUrn = m && m[0];
+  if (imagePaths.length >= 2) {
+    // Multi-image post: upload each still, then publish with the URNs.
+    const images = [];
+    for (const [i, p] of imagePaths.entries()) {
+      const up = await li.call("upload_media", {
+        image_data: readFileSync(path.resolve(p)).toString("base64"),
+      });
+      console.error(`upload_media[${i}] ${p}:`, show(up));
+      const m = show(up).match(/urn:li:(?:image|digitalmediaAsset):[A-Za-z0-9_-]+/);
+      if (!m) { console.error(`ERROR: no image URN returned for ${p}`); process.exit(1); }
+      images.push({ urn: m[0], alt_text: altTexts[i] || undefined });
+    }
+    const post = await li.call("create_multi_image_post", { text, images, visibility });
+    console.log("LINKEDIN_RESULT:\n" + show(post));
+  } else {
+    let imageUrn;
+    if (imageB64) {
+      const up = await li.call("upload_media", { image_data: imageB64 });
+      console.error("upload_media:", show(up));
+      const m = show(up).match(/urn:li:(?:image|digitalmediaAsset):[A-Za-z0-9_-]+/);
+      imageUrn = m && m[0];
+    }
+    const post = imageUrn
+      ? await li.call("create_image_post", { text, image_urn: imageUrn, alt_text: altText, visibility })
+      : imageB64
+        ? await li.call("create_image_post", { text, image_data: imageB64, alt_text: altText, visibility })
+        : await li.call("create_post", { text, visibility });
+    console.log("LINKEDIN_RESULT:\n" + show(post));
   }
-  const post = imageUrn
-    ? await li.call("create_image_post", { text, image_urn: imageUrn, alt_text: altText, visibility })
-    : imageB64
-      ? await li.call("create_image_post", { text, image_data: imageB64, alt_text: altText, visibility })
-      : await li.call("create_post", { text, visibility });
-  console.log("LINKEDIN_RESULT:\n" + show(post));
   li.close();
 }
 
@@ -113,12 +138,21 @@ if (doX) {
   await x.init();
   let mediaIds;
   if (imageB64) {
-    const up = await x.call("upload_media", { media_data: imageB64, mime_type: imageMime, media_category: "tweet_image" });
+    // Videos (.mp4, <5 MB) ride the same simple-upload path with tweet_video.
+    const mediaCategory = imageMime === "video/mp4" ? "tweet_video" : "tweet_image";
+    const up = await x.call("upload_media", { media_data: imageB64, mime_type: imageMime, media_category: mediaCategory });
     console.error("upload_media:", show(up));
     const m = show(up).match(/"?media_id"?\s*[:=]\s*"?(\d+)"?/) || show(up).match(/\b(\d{15,25})\b/);
     if (m) mediaIds = [m[1]];
   }
-  const post = await x.call("post_tweet", mediaIds ? { text, media_ids: mediaIds } : { text });
+  // X processes video async: retry the post while it reports the media not ready.
+  const posted = (s) => /\bid["']?\s*[:=]\s*["']?\d{10,}/.test(s);
+  let post = await x.call("post_tweet", mediaIds ? { text, media_ids: mediaIds } : { text });
+  for (let attempt = 1; attempt <= 3 && imageMime === "video/mp4" && !posted(show(post)); attempt++) {
+    console.error(`post_tweet: media not ready (attempt ${attempt}), retrying in 8s...`);
+    await new Promise((r) => setTimeout(r, 8000));
+    post = await x.call("post_tweet", { text, media_ids: mediaIds });
+  }
   console.log("X_RESULT:\n" + show(post));
   x.close();
 }
