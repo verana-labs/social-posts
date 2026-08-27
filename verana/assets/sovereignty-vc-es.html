@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #0b0b12; --surface: #151824; --surface-2: #1f2331; --rule: #2a2e3d;
+    --ink: #ffffff; --muted: #8b94a5;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #29c68c; --blue: #2e6be6;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.5) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; right: -140px; top: -40px;
+    width: 760px; height: 760px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(41,198,140,0.16) 0%, rgba(118,62,240,0.10) 45%, rgba(11,11,18,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 48px 72px 50px 72px; display: flex; flex-direction: column; }
+
+  .headline { font-size: 40px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; }
+  .headline .hl { color: var(--green); }
+
+  .panels { margin-top: 32px; display: flex; gap: 44px; }
+  .panel { width: 506px; }
+  .panel-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px; font-weight: 500; letter-spacing: 0.16em;
+  }
+  .panel-title.grey { color: var(--muted); }
+  .panel-title.green { color: var(--green); }
+  .panel-box {
+    margin-top: 14px; height: 252px;
+    background: rgba(21,24,36,0.72);
+    border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+  }
+  .caption { margin-top: 13px; font-family: 'IBM Plex Mono', monospace; font-size: 18px; }
+  .caption.grey  { color: var(--muted); }
+  .caption.green { color: var(--green); }
+
+  .footer {
+    margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 20px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="headline">¿Quién controla la <span class="hl">identidad digital</span> de sus ciudadanos?</div>
+
+      <div class="panels">
+        <!-- LEFT: the same citizen ID, duplicated and locked in every vendor silo -->
+        <div class="panel">
+          <div class="panel-title grey">IDENTIDAD EN SILOS PROPIETARIOS</div>
+          <div class="panel-box">
+            <svg width="506" height="252" viewBox="0 0 506 252" xmlns="http://www.w3.org/2000/svg">
+              <!-- mini ID card template, greyed, one per dashed silo -->
+              <!-- silo 1 -->
+              <g opacity="0.92">
+                <rect x="26" y="30" width="140" height="176" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="44" y="66" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="44" y="66" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="64" cy="103" r="11" fill="#3a3f52"/>
+                  <rect x="82" y="94" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="82" y="105" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="82" y="116" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="82" y="152" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M88 152 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <!-- silo 2 -->
+              <g opacity="0.92">
+                <rect x="183" y="14" width="140" height="192" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="201" y="54" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="201" y="54" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="221" cy="91" r="11" fill="#3a3f52"/>
+                  <rect x="239" y="82" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="239" y="93" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="239" y="104" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="239" y="144" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M245 144 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <!-- silo 3 -->
+              <g opacity="0.92">
+                <rect x="340" y="30" width="140" height="176" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="358" y="66" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="358" y="66" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="378" cy="103" r="11" fill="#3a3f52"/>
+                  <rect x="396" y="94" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="396" y="105" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="396" y="116" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="396" y="152" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M402 152 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <!-- broken links -->
+              <g stroke="#566071" stroke-width="2">
+                <line x1="168" y1="118" x2="178" y2="118"/>
+                <line x1="182" y1="118" x2="181" y2="118" opacity="0.3"/>
+                <line x1="325" y1="118" x2="335" y2="118"/>
+              </g>
+              <g fill="#566071" font-family="'IBM Plex Mono', monospace" font-size="15" text-anchor="middle">
+                <text x="253" y="238">una copia por proveedor · nada interopera</text>
+              </g>
+            </svg>
+          </div>
+          <div class="caption grey">la controla el proveedor</div>
+        </div>
+
+        <!-- RIGHT: one verifiable credential, issued by the state, verified against the public registry -->
+        <div class="panel">
+          <div class="panel-title green">IDENTIDAD DIGITAL VERIFICABLE</div>
+          <div class="panel-box">
+            <svg width="506" height="252" viewBox="0 0 506 252" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#763ef0"/>
+                  <stop offset="1" stop-color="#29c68c"/>
+                </linearGradient>
+                <linearGradient id="edge2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#763ef0"/>
+                  <stop offset="1" stop-color="#29c68c"/>
+                </linearGradient>
+                <radialGradient id="nodeglow2" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="rgba(41,198,140,0.5)"/>
+                  <stop offset="1" stop-color="rgba(41,198,140,0)"/>
+                </radialGradient>
+              </defs>
+
+              <!-- edges from the credential down to the public registry nodes -->
+              <g stroke="url(#edge2)" stroke-width="1.8" opacity="0.9">
+                <line x1="200" y1="150" x2="110" y2="205"/>
+                <line x1="253" y1="150" x2="253" y2="208"/>
+                <line x1="306" y1="150" x2="396" y2="205"/>
+                <line x1="110" y1="205" x2="253" y2="208" opacity="0.5"/>
+                <line x1="253" y1="208" x2="396" y2="205" opacity="0.5"/>
+              </g>
+
+              <!-- the credential card -->
+              <g>
+                <rect x="140" y="26" width="226" height="124" rx="12" fill="#1f2331" stroke="#29c68c" stroke-width="1.6"/>
+                <rect x="140" y="26" width="226" height="24" rx="12" fill="url(#band)"/>
+                <rect x="140" y="38" width="226" height="12" fill="#1f2331"/>
+                <circle cx="180" cy="96" r="19" fill="#2a2e3d" stroke="#3a3f52"/>
+                <circle cx="180" cy="89" r="7" fill="#566071"/>
+                <path d="M166 106 a14 9 0 0 1 28 0" fill="#566071"/>
+                <rect x="212" y="76" width="98" height="8" rx="4" fill="#8b94a5"/>
+                <rect x="212" y="92" width="76" height="8" rx="4" fill="#3a3f52"/>
+                <rect x="212" y="108" width="88" height="8" rx="4" fill="#3a3f52"/>
+                <text x="212" y="138" fill="#8c5bff" font-family="'IBM Plex Mono', monospace" font-size="13">did:...:ciudadano</text>
+                <!-- QR-ish block -->
+                <g fill="#8b94a5">
+                  <rect x="326" y="98" width="26" height="26" rx="2" fill="#2a2e3d"/>
+                  <rect x="330" y="102" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="341" y="102" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="330" y="113" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="343" y="115" width="5" height="5" fill="#8b94a5"/>
+                </g>
+                <!-- verified seal -->
+                <circle cx="366" cy="42" r="19" fill="#0b0b12" stroke="#29c68c" stroke-width="3"/>
+                <path d="M357 42 l6 7 l12 -13" fill="none" stroke="#29c68c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+
+              <!-- public registry nodes -->
+              <g>
+                <circle cx="110" cy="205" r="26" fill="url(#nodeglow2)"/>
+                <circle cx="253" cy="208" r="26" fill="url(#nodeglow2)"/>
+                <circle cx="396" cy="205" r="26" fill="url(#nodeglow2)"/>
+              </g>
+              <g fill="#0b0b12" stroke="#29c68c" stroke-width="3">
+                <circle cx="110" cy="205" r="12"/>
+                <circle cx="253" cy="208" r="12"/>
+                <circle cx="396" cy="205" r="12"/>
+              </g>
+              <g fill="#29c68c">
+                <circle cx="110" cy="205" r="4"/>
+                <circle cx="253" cy="208" r="4"/>
+                <circle cx="396" cy="205" r="4"/>
+              </g>
+              <g fill="#29c68c" font-family="'IBM Plex Mono', monospace" font-size="15" text-anchor="middle" opacity="0.9">
+                <text x="253" y="244">credencial verificable · registro público soberano</text>
+              </g>
+            </svg>
+          </div>
+          <div class="caption green">la controla usted</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="brandrow">
+          <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+            <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+          </svg>
+          <span class="name">Verana Foundation</span>
+        </div>
+        <div class="url">veranafoundation.org</div>
+      </div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
