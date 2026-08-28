@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #0b0b12; --surface: #151824; --surface-2: #1f2331; --rule: #2a2e3d;
+    --ink: #ffffff; --muted: #8b94a5;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #29c68c; --blue: #2e6be6;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.5) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; right: -160px; top: 0px;
+    width: 780px; height: 780px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(41,198,140,0.15) 0%, rgba(118,62,240,0.10) 45%, rgba(11,11,18,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 46px 72px 48px 72px; display: flex; flex-direction: column; }
+
+  .headline { font-size: 39px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.14; max-width: 1010px; }
+  .headline .hl { color: var(--green); }
+
+  .panels { margin-top: 30px; display: flex; gap: 44px; }
+  .panel { width: 506px; }
+
+  .option-row { display: flex; align-items: center; gap: 12px; }
+  .radio {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2.5px solid var(--muted); flex: none;
+  }
+  .radio.checked { border-color: var(--green); position: relative; }
+  .radio.checked::after {
+    content: ""; position: absolute; inset: 4px; border-radius: 50%;
+    background: var(--green);
+  }
+  .panel-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px; font-weight: 500; letter-spacing: 0.14em;
+  }
+  .panel-title.grey { color: var(--muted); }
+  .panel-title.green { color: var(--green); }
+
+  .panel-box {
+    margin-top: 13px; height: 244px;
+    background: rgba(21,24,36,0.72);
+    border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+  }
+  .panel-box.chosen { border: 1.5px solid rgba(41,198,140,0.65); }
+
+  .caption { margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 17px; }
+  .caption.grey  { color: var(--muted); }
+  .caption.green { color: var(--green); }
+
+  .footer {
+    margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 20px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="headline">How do you want to deploy digital identity with <span class="hl">verifiable credentials</span> in your country?</div>
+
+      <div class="panels">
+        <!-- OPTION 1: proprietary silos -->
+        <div class="panel">
+          <div class="option-row">
+            <div class="radio"></div>
+            <div class="panel-title grey">IN PROPRIETARY SILOS</div>
+          </div>
+          <div class="panel-box">
+            <svg width="506" height="244" viewBox="0 0 506 244" xmlns="http://www.w3.org/2000/svg">
+              <!-- the same citizen ID, one locked copy per vendor silo -->
+              <g opacity="0.92">
+                <rect x="26" y="24" width="140" height="176" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="44" y="60" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="44" y="60" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="64" cy="97" r="11" fill="#3a3f52"/>
+                  <rect x="82" y="88" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="82" y="99" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="82" y="110" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="82" y="146" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M88 146 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <g opacity="0.92">
+                <rect x="183" y="8" width="140" height="192" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="201" y="48" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="201" y="48" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="221" cy="85" r="11" fill="#3a3f52"/>
+                  <rect x="239" y="76" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="239" y="87" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="239" y="98" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="239" y="138" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M245 138 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <g opacity="0.92">
+                <rect x="340" y="24" width="140" height="176" rx="10" fill="none" stroke="#566071" stroke-dasharray="6 6"/>
+                <g>
+                  <rect x="358" y="60" width="104" height="68" rx="8" fill="#1f2331" stroke="#3a3f52"/>
+                  <rect x="358" y="60" width="104" height="14" rx="8" fill="#2a2e3d"/>
+                  <circle cx="378" cy="97" r="11" fill="#3a3f52"/>
+                  <rect x="396" y="88" width="54" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="396" y="99" width="42" height="5" rx="2.5" fill="#3a3f52"/>
+                  <rect x="396" y="110" width="48" height="5" rx="2.5" fill="#3a3f52"/>
+                </g>
+                <rect x="396" y="146" width="28" height="22" rx="3" fill="#566071"/>
+                <path d="M402 146 v-8 a8 8 0 0 1 16 0 v8" fill="none" stroke="#566071" stroke-width="4"/>
+              </g>
+              <g stroke="#566071" stroke-width="2">
+                <line x1="168" y1="112" x2="178" y2="112"/>
+                <line x1="325" y1="112" x2="335" y2="112"/>
+              </g>
+              <g fill="#566071" font-family="'IBM Plex Mono', monospace" font-size="15" text-anchor="middle">
+                <text x="253" y="230">one copy per vendor</text>
+              </g>
+            </svg>
+          </div>
+          <div class="caption grey">vendor lock-in · the vendor controls it</div>
+        </div>
+
+        <!-- OPTION 2: sovereign infrastructure (chosen) -->
+        <div class="panel">
+          <div class="option-row">
+            <div class="radio checked"></div>
+            <div class="panel-title green">ON SOVEREIGN INFRASTRUCTURE</div>
+          </div>
+          <div class="panel-box chosen">
+            <svg width="506" height="244" viewBox="0 0 506 244" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#763ef0"/>
+                  <stop offset="1" stop-color="#29c68c"/>
+                </linearGradient>
+                <linearGradient id="edge2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#763ef0"/>
+                  <stop offset="1" stop-color="#29c68c"/>
+                </linearGradient>
+                <radialGradient id="nodeglow2" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="rgba(41,198,140,0.5)"/>
+                  <stop offset="1" stop-color="rgba(41,198,140,0)"/>
+                </radialGradient>
+              </defs>
+
+              <g stroke="url(#edge2)" stroke-width="1.8" opacity="0.9">
+                <line x1="200" y1="142" x2="110" y2="197"/>
+                <line x1="253" y1="142" x2="253" y2="200"/>
+                <line x1="306" y1="142" x2="396" y2="197"/>
+                <line x1="110" y1="197" x2="253" y2="200" opacity="0.5"/>
+                <line x1="253" y1="200" x2="396" y2="197" opacity="0.5"/>
+              </g>
+
+              <!-- the credential card -->
+              <g>
+                <rect x="140" y="18" width="226" height="124" rx="12" fill="#1f2331" stroke="#29c68c" stroke-width="1.6"/>
+                <path d="M140 30 a12 12 0 0 1 12 -12 h202 a12 12 0 0 1 12 12 v6 h-226 Z" fill="url(#band)"/>
+                <circle cx="180" cy="88" r="19" fill="#2a2e3d" stroke="#3a3f52"/>
+                <circle cx="180" cy="81" r="7" fill="#566071"/>
+                <path d="M166 98 a14 9 0 0 1 28 0" fill="#566071"/>
+                <rect x="212" y="60" width="98" height="8" rx="4" fill="#8b94a5"/>
+                <rect x="212" y="76" width="76" height="8" rx="4" fill="#3a3f52"/>
+                <rect x="212" y="92" width="88" height="8" rx="4" fill="#3a3f52"/>
+                <text x="152" y="132" fill="#8c5bff" font-family="'IBM Plex Mono', monospace" font-size="13">did:...:citizen</text>
+                <g>
+                  <rect x="326" y="102" width="26" height="26" rx="2" fill="#2a2e3d"/>
+                  <rect x="330" y="106" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="341" y="106" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="330" y="117" width="7" height="7" fill="#8b94a5"/>
+                  <rect x="343" y="119" width="5" height="5" fill="#8b94a5"/>
+                </g>
+                <circle cx="366" cy="34" r="19" fill="#0b0b12" stroke="#29c68c" stroke-width="3"/>
+                <path d="M357 34 l6 7 l12 -13" fill="none" stroke="#29c68c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+
+              <!-- public registry nodes -->
+              <g>
+                <circle cx="110" cy="197" r="26" fill="url(#nodeglow2)"/>
+                <circle cx="253" cy="200" r="26" fill="url(#nodeglow2)"/>
+                <circle cx="396" cy="197" r="26" fill="url(#nodeglow2)"/>
+              </g>
+              <g fill="#0b0b12" stroke="#29c68c" stroke-width="3">
+                <circle cx="110" cy="197" r="12"/>
+                <circle cx="253" cy="200" r="12"/>
+                <circle cx="396" cy="197" r="12"/>
+              </g>
+              <g fill="#29c68c">
+                <circle cx="110" cy="197" r="4"/>
+                <circle cx="253" cy="200" r="4"/>
+                <circle cx="396" cy="197" r="4"/>
+              </g>
+              <g fill="#29c68c" font-family="'IBM Plex Mono', monospace" font-size="15" text-anchor="middle" opacity="0.9">
+                <text x="253" y="236">sovereign public registry · interoperable</text>
+              </g>
+            </svg>
+          </div>
+          <div class="caption green">open · you control it</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="brandrow">
+          <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+            <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+          </svg>
+          <span class="name">Verana Foundation</span>
+        </div>
+        <div class="url">veranafoundation.org</div>
+      </div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
