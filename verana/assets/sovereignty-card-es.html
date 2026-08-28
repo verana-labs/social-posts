@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk is installed locally; IBM Plex Mono comes from the web font above. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  /* verana.io dark tokens */
+  :root {
+    --bg: #0b0b12;          /* Ink Black */
+    --surface: #151824;     /* Graphite */
+    --surface-2: #1f2331;
+    --rule: #2a2e3d;
+    --ink: #ffffff;
+    --muted: #8b94a5;
+    --primary: #763ef0;
+    --primary-bright: #8c5bff;
+    --green: #29c68c;       /* Signal Green */
+    --blue: #2e6be6;        /* Electric Blue */
+  }
+
+  .card {
+    position: relative;
+    width: 1200px; height: 627px;
+    background: var(--bg);
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+  }
+
+  /* protocol grid: faint 1px lines */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.55) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+
+  /* hero glow behind the answer, like the video's answer scenes */
+  .glow {
+    position: absolute; right: -180px; bottom: -220px;
+    width: 720px; height: 720px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(118,62,240,0.28) 0%,
+      rgba(41,198,140,0.10) 45%,
+      rgba(11,11,18,0) 70%);
+  }
+
+  .content {
+    position: absolute; inset: 0;
+    padding: 64px 72px 56px 72px;
+    display: flex; flex-direction: column;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px; font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--green);
+  }
+  .eyebrow .dim { color: var(--muted); }
+
+  .headline {
+    margin-top: 30px;
+    font-size: 66px; font-weight: 700;
+    line-height: 1.08; letter-spacing: -0.02em;
+    max-width: 980px;
+  }
+
+  .chips { margin-top: 38px; display: flex; gap: 14px; }
+  .chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 18px;
+  }
+
+  .footer {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule);
+    padding-top: 26px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; }
+  .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px; color: var(--muted);
+  }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="eyebrow">INFRAESTRUCTURA PÚBLICA CRÍTICA <span class="dim">/ SOBERANÍA DIGITAL</span></div>
+
+      <div class="headline">¿Quién controla la infraestructura de confianza de su país?</div>
+
+      <div class="chips">
+        <div class="chip">reglas propias</div>
+        <div class="chip">datos propios</div>
+        <div class="chip">operación propia</div>
+      </div>
+
+      <div class="footer">
+        <div class="brandrow">
+          <svg width="40" height="38" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+            <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+          </svg>
+          <span class="name">Verana Foundation</span>
+        </div>
+        <div class="url">veranafoundation.org</div>
+      </div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
