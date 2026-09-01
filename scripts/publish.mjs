@@ -87,8 +87,12 @@ function mcpClient(dockerArgs) {
 
 const liArgs = ["run", "--rm", "-i", "--env-file", `${HOME}/.mcp/linkedin.env`,
   "-v", `${HOME}/.mcp/linkedin-data:/data`, "-e", "MCP_TRANSPORT=stdio", "io2060/linkedin-mcp:latest"];
-const xArgs = ["run", "--rm", "-i", "--env-file", `${HOME}/.mcp/x.env`,
-  "-v", `${HOME}/.mcp/x-data:/data`, "-e", "MCP_TRANSPORT=stdio", "io2060/x-autonomous-mcp:latest"];
+// X_ENV_FILE / X_DATA_DIR select the X account (e.g. ~/.mcp/x-verana.env +
+// ~/.mcp/x-verana-data for @verana_io); defaults are the personal account.
+const XENV = process.env.X_ENV_FILE ?? `${HOME}/.mcp/x.env`;
+const XDATA = process.env.X_DATA_DIR ?? `${HOME}/.mcp/x-data`;
+const xArgs = ["run", "--rm", "-i", "--env-file", XENV,
+  "-v", `${XDATA}:/data`, "-e", "MCP_TRANSPORT=stdio", "io2060/x-autonomous-mcp:latest"];
 
 const show = (r) => (r?.content?.map?.((c) => c.text).join("\n") ?? JSON.stringify(r));
 
