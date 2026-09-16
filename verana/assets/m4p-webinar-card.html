@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #ffffff; --surface: #f4f5f8; --surface-2: #eceef3; --rule: #e3e6ec;
+    --ink: #0b0b12; --muted: #566071;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #0e7a57; --blue: #1f57c9;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(86,96,113,0.10) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(86,96,113,0.10) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; right: -160px; top: -120px;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(118,62,240,0.10) 0%, rgba(41,198,140,0.06) 45%, rgba(255,255,255,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 56px 72px 50px 72px; display: flex; }
+
+  .left { width: 660px; display: flex; flex-direction: column; }
+  .chip {
+    align-self: flex-start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--green);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 16px;
+  }
+  .eyebrow {
+    margin-top: 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px; letter-spacing: 0.16em; color: var(--muted);
+  }
+  .headline {
+    margin-top: 14px;
+    font-size: 52px; font-weight: 700; line-height: 1.12; letter-spacing: -0.02em;
+  }
+  .headline .hl { color: var(--primary); }
+  .when {
+    margin-top: 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px; line-height: 1.75; color: var(--green);
+  }
+  .when .dim { color: var(--muted); }
+
+  .right { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 0; gap: 16px; }
+  .speaker { display: flex; flex-direction: column; align-items: center; }
+  .avatar {
+    width: 148px; height: 148px; border-radius: 50%;
+    border: 4px solid #ffffff;
+    outline: 3px solid rgba(31,181,122,0.7);
+    outline-offset: 3px;
+    box-shadow: 0 4px 16px rgba(11,11,18,0.12);
+    object-fit: cover;
+  }
+  .speaker .name { margin-top: 10px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .speaker .org {
+    margin-top: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px; color: var(--green);
+  }
+
+  .footer {
+    position: absolute; left: 72px; right: 72px; bottom: 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 20px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="left">
+        <div class="chip">WEBINAR · SEPTEMBER 17</div>
+        <div class="eyebrow">ECLIPSE FOUNDATION · MODELS4PRIVACY INTEREST GROUP</div>
+        <div class="headline">Why <span class="hl">AI Agents</span> must have their own identity?</div>
+        <div class="when">
+          Thursday, September 17<br>
+          15:00 UTC · 17:00 CET · 11:00 EDT<br>
+          <span class="dim">Zoom · free and open to all · live demo</span>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="speaker">
+          <img class="avatar" src="./fabrice-headshot.png" alt="">
+          <div class="name">Fabrice Rochette</div>
+          <div class="org">Verana Foundation</div>
+        </div>
+        <div class="speaker">
+          <img class="avatar" src="./ariel-headshot.png" alt="">
+          <div class="name">Ariel Gentile</div>
+          <div class="org">CTO, 2060</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="brandrow">
+        <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="url">models4privacy.org</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
