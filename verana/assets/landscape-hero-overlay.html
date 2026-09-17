@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1536px; height: 864px; }
+
+  .card {
+    position: relative; width: 1536px; height: 864px;
+    background: #0b0b12; overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: #ffffff;
+  }
+  .hero {
+    position: absolute; inset: 0;
+    width: 1536px; height: 864px; object-fit: cover;
+  }
+  /* legibility scrims */
+  .scrim-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 300px;
+    background: linear-gradient(to bottom, rgba(11,11,18,0.88) 0%, rgba(11,11,18,0.55) 55%, rgba(11,11,18,0) 100%);
+  }
+  .scrim-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 170px;
+    background: linear-gradient(to top, rgba(11,11,18,0.85) 0%, rgba(11,11,18,0.45) 60%, rgba(11,11,18,0) 100%);
+  }
+
+  .title-block {
+    position: absolute; top: 56px; left: 80px; right: 80px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 21px; font-weight: 500; letter-spacing: 0.22em;
+    color: #29c68c;
+  }
+  .headline {
+    margin-top: 16px;
+    font-size: 64px; font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+  .headline .hl { color: #8c5bff; }
+  .sub {
+    margin-top: 12px;
+    font-size: 26px; color: rgba(255,255,255,0.75); letter-spacing: -0.01em;
+  }
+
+  .footer {
+    position: absolute; left: 80px; right: 80px; bottom: 44px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brandrow { display: flex; align-items: center; gap: 16px; }
+  .brandrow .name { font-size: 32px; font-weight: 700; letter-spacing: -0.01em; color: #ffffff; }
+  .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px; color: rgba(255,255,255,0.72);
+  }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 7px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="hero" src="../20260917-001-002.png" alt="">
+    <div class="scrim-top"></div>
+    <div class="scrim-bottom"></div>
+
+    <div class="title-block">
+      <div class="eyebrow">VERANA RESEARCH · SEPTEMBER 2026 · OPEN ACCESS</div>
+      <div class="headline">The <span class="hl">Agent Identity</span> Landscape</div>
+      <div class="sub">A comparative analysis of trust approaches for autonomous actors</div>
+    </div>
+
+    <div class="footer">
+      <div class="brandrow">
+        <svg width="46" height="44" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#8c5bff" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="url">verana-labs/verana-research · CC BY 4.0</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
