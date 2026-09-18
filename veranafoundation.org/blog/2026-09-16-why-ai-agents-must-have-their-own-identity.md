@@ -3,9 +3,9 @@ title: "Why AI Agents must have their own identity?"
 date: 2026-09-16
 tag: Events
 excerpt: The Verana Foundation joins the Eclipse Foundation's Models4Privacy Interest Group for a webinar on agent identity, the privacy trap of central registries, and privacy engineering for decentralized trust.
-author: Fabrice Rochette
-authorAvatar: https://2060.io/assets/illustrations/fabrice.jpeg
-authorSocial: https://www.linkedin.com/in/fabricerochette/
+author: Ariel Gentile
+authorAvatar: https://2060.io/assets/illustrations/ariel.jpeg
+authorSocial: https://www.linkedin.com/in/aogentile/
 ---
 
 ![Webinar card: Why AI Agents must have their own identity? Eclipse Foundation Models4Privacy Interest Group, Thursday September 17, 15:00 UTC, on Zoom, free and open to all. Speakers Fabrice Rochette of the Verana Foundation and Ariel Gentile, CTO of 2060](./2026-09-16-why-ai-agents-must-have-their-own-identity-001.png)

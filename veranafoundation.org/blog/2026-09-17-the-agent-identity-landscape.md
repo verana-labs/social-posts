@@ -3,9 +3,9 @@ title: "The Agent Identity Landscape, September 2026"
 date: 2026-09-17
 tag: Research
 excerpt: A new open-access paper compares six deployed families of agent trust approaches against four criteria, and finds that none binds an agent to an accountable operator, with verifiable authorizations, across domains, without an observer.
-author: Fabrice Rochette
-authorAvatar: https://2060.io/assets/illustrations/fabrice.jpeg
-authorSocial: https://www.linkedin.com/in/fabricerochette/
+author: Ariel Gentile
+authorAvatar: https://2060.io/assets/illustrations/ariel.jpeg
+authorSocial: https://www.linkedin.com/in/aogentile/
 ---
 
 ![Cover image titled The Agent Identity Landscape: a person seen from behind faces rows of identical faceless AI agents extending their hands, each hanging from marionette strings that vanish into darkness](./2026-09-17-the-agent-identity-landscape-001.png)
