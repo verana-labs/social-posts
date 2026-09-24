@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #0b0b12; --surface: #151824; --surface-2: #1f2331; --rule: #2a2e3d;
+    --ink: #ffffff; --muted: #8b94a5;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #29c68c;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.5) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; right: -140px; top: -100px;
+    width: 820px; height: 820px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(118,62,240,0.20) 0%, rgba(41,198,140,0.10) 45%, rgba(11,11,18,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 58px 72px 50px 72px; display: flex; }
+
+  .left { width: 585px; display: flex; flex-direction: column; padding-right: 20px; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--primary-bright);
+  }
+  .headline {
+    margin-top: 26px;
+    font-size: 54px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  }
+  .headline .hl { color: var(--primary-bright); }
+  .sub {
+    margin-top: 30px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 21px; line-height: 1.75; color: var(--muted);
+  }
+  .sub .g { color: var(--green); }
+
+  .right { flex: 1; position: relative; }
+
+  .footer {
+    position: absolute; left: 72px; right: 72px; bottom: 46px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 22px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="left">
+        <div class="eyebrow">THE AI PING-PONG EFFECT</div>
+        <div class="headline">Five rounds later: <span class="hl">different</span>, not better.</div>
+        <div class="sub">
+          AI detects. <span class="g">HI decides.</span><br>
+          AI generates. <span class="g">HI terminates.</span>
+        </div>
+      </div>
+
+      <div class="right">
+        <svg width="470" height="455" viewBox="0 0 470 455" xmlns="http://www.w3.org/2000/svg" style="position:absolute; right:-10px; top:-8px;">
+          <defs>
+            <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#8c5bff"/>
+            </marker>
+            <marker id="arrL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#8b94a5"/>
+            </marker>
+          </defs>
+
+          <!-- column headers -->
+          <g font-family="'IBM Plex Mono', monospace" font-size="17" font-weight="500">
+            <text x="90" y="30" fill="#8c5bff" text-anchor="middle" letter-spacing="2">MY AI</text>
+            <text x="380" y="30" fill="#8c5bff" text-anchor="middle" letter-spacing="2">YOUR AI</text>
+          </g>
+          <!-- column guides -->
+          <g stroke="#2a2e3d" stroke-width="1.5" stroke-dasharray="3 5">
+            <line x1="90" y1="44" x2="90" y2="330"/>
+            <line x1="380" y1="44" x2="380" y2="330"/>
+          </g>
+
+          <!-- rally arrows -->
+          <g stroke-width="2.5" fill="none">
+            <line x1="98" y1="66"  x2="368" y2="86"  stroke="#8c5bff" marker-end="url(#arrR)"/>
+            <line x1="372" y1="106" x2="102" y2="126" stroke="#8b94a5" marker-end="url(#arrL)"/>
+            <line x1="98" y1="146" x2="368" y2="166" stroke="#8c5bff" marker-end="url(#arrR)"/>
+            <line x1="372" y1="186" x2="102" y2="206" stroke="#8b94a5" marker-end="url(#arrL)"/>
+            <line x1="98" y1="226" x2="368" y2="246" stroke="#8c5bff" marker-end="url(#arrR)"/>
+            <line x1="372" y1="266" x2="102" y2="286" stroke="#8b94a5" stroke-dasharray="6 7" opacity="0.65" marker-end="url(#arrL)"/>
+            <line x1="98" y1="306" x2="368" y2="326" stroke="#8c5bff" stroke-dasharray="6 7" opacity="0.4" marker-end="url(#arrR)"/>
+          </g>
+
+          <!-- rally labels -->
+          <g font-family="'IBM Plex Mono', monospace" font-size="14" fill="#8b94a5" text-anchor="middle">
+            <text x="235" y="66">draft v1</text>
+            <text x="235" y="106">12 issues found</text>
+            <text x="235" y="146">rewrite v2</text>
+            <text x="235" y="186">9 new issues</text>
+            <text x="235" y="226">rewrite v3</text>
+            <text x="235" y="266">7 more issues</text>
+            <text x="235" y="306" opacity="0.5">...</text>
+          </g>
+
+          <!-- ping-pong ball -->
+          <circle cx="235" cy="156" r="7" fill="#ffffff"/>
+          <circle cx="235" cy="156" r="12" fill="none" stroke="#ffffff" opacity="0.25"/>
+
+          <!-- HI stop line -->
+          <g>
+            <line x1="30" y1="368" x2="440" y2="368" stroke="#29c68c" stroke-width="3.5"/>
+            <circle cx="235" cy="368" r="30" fill="#0b0b12" stroke="#29c68c" stroke-width="3.5"/>
+            <text x="235" y="376" fill="#29c68c" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="700" text-anchor="middle">HI</text>
+          </g>
+          <text x="235" y="424" fill="#29c68c" font-family="'IBM Plex Mono', monospace" font-size="15.5" text-anchor="middle" opacity="0.95">defines done &#183; calls convergence &#183; signs</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="brandrow">
+        <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="url">veranafoundation.org</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
