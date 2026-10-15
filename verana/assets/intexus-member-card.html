@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+  /* Space Grotesk local; IBM Plex Mono web font. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #0b0b12; --surface: #151824; --surface-2: #1f2331; --rule: #2a2e3d;
+    --ink: #ffffff; --muted: #8b94a5;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #29c68c;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.5) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; right: -120px; top: -80px;
+    width: 820px; height: 820px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(118,62,240,0.22) 0%, rgba(41,198,140,0.12) 45%, rgba(11,11,18,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 62px 72px 50px 72px; display: flex; }
+
+  .left { width: 560px; display: flex; flex-direction: column; padding-right: 10px; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--green);
+  }
+  .headline {
+    margin-top: 26px;
+    font-size: 56px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  }
+  .headline .hl { color: var(--primary-bright); }
+  .sub {
+    margin-top: 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px; line-height: 1.75; color: var(--muted);
+  }
+
+  .right { flex: 1; position: relative; }
+
+  /* membership credential card */
+  .vc {
+    position: absolute; right: 0; top: 34px;
+    width: 470px; height: 290px;
+    background: var(--surface-2);
+    border: 2px solid var(--green);
+    border-radius: 18px;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.55);
+  }
+  .vc .band {
+    height: 16px; border-radius: 16px 16px 0 0;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+  .vc .kicker {
+    margin: 26px 34px 0 34px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px; letter-spacing: 0.15em; color: var(--muted);
+  }
+  .vc .logo { margin: 30px 34px 0 34px; }
+  .vc .logo img { width: 330px; height: auto; display: block; }
+  .vc .memline {
+    margin: 32px 34px 0 34px;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .vc .memline .cls {
+    font-size: 26px; font-weight: 700; letter-spacing: 0.01em; color: var(--green);
+  }
+  .vc .memline .yr {
+    font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted);
+  }
+  .seal {
+    position: absolute; right: -24px; top: -26px;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--bg); border: 4px solid var(--green);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .footer {
+    position: absolute; left: 72px; right: 72px; bottom: 46px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 22px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="left">
+        <div class="eyebrow">NEW ASSOCIATE MEMBER</div>
+        <div class="headline">INTEXUS joins the <span class="hl">Verana Foundation</span></div>
+        <div class="sub">digital identity &#183; secure payments<br>Am&#233;rica Latina</div>
+      </div>
+
+      <div class="right">
+        <div class="vc">
+          <div class="band"></div>
+          <div class="kicker">MEMBERSHIP CREDENTIAL</div>
+          <div class="logo"><img src="intexus-logo.svg" alt="INTEXUS"></div>
+          <div class="memline">
+            <span class="cls">Associate Member</span>
+            <span class="yr">2026</span>
+          </div>
+          <div class="seal">
+            <svg width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17 l7 8 l13 -15" fill="none" stroke="#29c68c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="brandrow">
+        <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="url">veranafoundation.org/members</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
