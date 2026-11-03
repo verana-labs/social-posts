@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  /* Mirrors latamgovtech.com: cream ground, near-black extra-bold headline with
+     terminal period, sky-blue pills and dashes, white rounded cards with
+     uppercase micro-labels, black pill CTA. System grotesque type. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #f4f2ec; --ink: #121212; --muted: #4c4c4c;
+    --blue: #ace0fb; --blue-deep: #7ec4ef;
+    --card: #ffffff; --rule: #e6e2d8;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Helvetica Neue', 'Inter', Arial, sans-serif;
+    color: var(--ink);
+    padding: 52px 64px;
+  }
+
+  .toprow { display: flex; align-items: center; justify-content: space-between; }
+  .brandrow { display: flex; align-items: center; gap: 13px; }
+  .brandrow .name { font-size: 25px; font-weight: 700; letter-spacing: -0.02em; }
+  .pill {
+    background: var(--blue); color: var(--ink);
+    font-size: 17px; font-weight: 600; letter-spacing: 0;
+    padding: 10px 22px; border-radius: 999px;
+  }
+
+  .headline {
+    margin-top: 58px;
+    font-size: 112px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.98;
+  }
+  .sub {
+    margin-top: 26px;
+    font-size: 25px; line-height: 1.45; color: var(--muted); max-width: 920px;
+    font-weight: 500; letter-spacing: -0.01em;
+  }
+
+  .bottomrow {
+    position: absolute; left: 64px; right: 64px; bottom: 52px;
+    display: flex; gap: 18px; align-items: stretch;
+  }
+  .mini {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 18px;
+    padding: 18px 24px 17px 24px; flex: 1;
+  }
+  .mini .dash { width: 30px; height: 4px; background: var(--blue-deep); border-radius: 2px; }
+  .mini .label {
+    margin-top: 10px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--ink);
+  }
+  .mini .val { margin-top: 5px; font-size: 18.5px; font-weight: 500; color: var(--muted); letter-spacing: -0.01em; }
+
+  .cta {
+    background: var(--ink); color: #ffffff; border-radius: 999px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 30px; font-size: 20px; font-weight: 600; white-space: nowrap;
+  }
+  .cta .arrow { font-size: 22px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="toprow">
+      <div class="brandrow">
+        <svg width="40" height="38" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="pill">GovTech Summit 2026 &#183; Bogot&#225;</div>
+    </div>
+
+    <div class="headline">Meet Verana.</div>
+    <div class="sub">Identidad digital, registros p&#250;blicos y confianza verificable para el Estado, sobre infraestructura abierta y soberana.</div>
+
+    <div class="bottomrow">
+      <div class="mini">
+        <div class="dash"></div>
+        <div class="label">CU&#193;NDO</div>
+        <div class="val">3 y 4 de noviembre, 8 am a 6 pm</div>
+      </div>
+      <div class="mini">
+        <div class="dash"></div>
+        <div class="label">D&#211;NDE</div>
+        <div class="val">CEFE Chapinero, Bogot&#225;</div>
+      </div>
+      <div class="cta">Conversemos <span class="arrow">&#8594;</span></div>
+    </div>
+  </div>
+</body>
+</html>
