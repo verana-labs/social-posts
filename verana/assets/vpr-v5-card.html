@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 627px; }
+
+  :root {
+    --bg: #0b0b12; --surface: #151824; --surface-2: #1f2331; --rule: #2a2e3d;
+    --ink: #ffffff; --muted: #8b94a5;
+    --primary: #763ef0; --primary-bright: #8c5bff;
+    --green: #29c68c;
+  }
+
+  .card {
+    position: relative; width: 1200px; height: 627px;
+    background: var(--bg); overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(42,46,61,0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42,46,61,0.5) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .glow {
+    position: absolute; left: -220px; top: -160px;
+    width: 820px; height: 820px; border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(118,62,240,0.22) 0%, rgba(41,198,140,0.10) 45%, rgba(11,11,18,0) 70%);
+  }
+
+  .content { position: absolute; inset: 0; padding: 56px 72px 0 72px; display: flex; gap: 56px; }
+
+  .left { width: 470px; display: flex; flex-direction: column; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--green); line-height: 1.6;
+  }
+  .headline {
+    margin-top: 22px;
+    font-size: 50px; font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+  }
+  .version {
+    margin-top: 6px;
+    font-size: 132px; font-weight: 700; line-height: 1; letter-spacing: -0.04em;
+    color: var(--primary-bright);
+  }
+  .stats {
+    margin-top: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px; color: var(--muted);
+  }
+
+  .right { flex: 1; display: flex; flex-direction: column; gap: 11px; padding-top: 4px; }
+  .row {
+    background: rgba(21,24,36,0.92);
+    border: 1px solid var(--rule); border-left: 4px solid var(--primary-bright);
+    border-radius: 10px;
+    padding: 11px 22px 12px 20px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  }
+  .row .q { font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--muted); white-space: nowrap; }
+  .row .a { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+  .row.g { border-left-color: var(--green); }
+
+  .footer {
+    position: absolute; left: 72px; right: 72px; bottom: 46px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 22px;
+  }
+  .brandrow { display: flex; align-items: center; gap: 14px; }
+  .brandrow .name { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .url { font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--muted); }
+
+  .gradient-bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: linear-gradient(90deg, #763EF0 0%, #1FB57A 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+
+    <div class="content">
+      <div class="left">
+        <div class="eyebrow">SPECIFICATION<br>DRAFT OPEN FOR REVIEW</div>
+        <div class="headline">Verifiable Public Registry</div>
+        <div class="version">v5</div>
+        <div class="stats">357 commits &#183; 5 review rounds &#183; 1 audit</div>
+      </div>
+
+      <div class="right">
+        <div class="row"><span class="q">Who is authorized?</span><span class="a">Accreditations</span></div>
+        <div class="row"><span class="q">Who decides?</span><span class="a">Each ecosystem</span></div>
+        <div class="row"><span class="q">Who governs the registry?</span><span class="a">A council</span></div>
+        <div class="row"><span class="q">Who operates it?</span><span class="a">No single operator</span></div>
+        <div class="row"><span class="q">What if trust is broken?</span><span class="a">Accountability</span></div>
+        <div class="row g"><span class="q">Can it be audited?</span><span class="a">Exchange records</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="brandrow">
+        <svg width="38" height="36" viewBox="0 0 54 52" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#763EF0" d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z"/>
+          <path fill="#1FB57A" d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z"/>
+        </svg>
+        <span class="name">Verana Foundation</span>
+      </div>
+      <div class="url">verana-labs.github.io/verifiable-trust-vpr-spec</div>
+    </div>
+
+    <div class="gradient-bar"></div>
+  </div>
+</body>
+</html>
